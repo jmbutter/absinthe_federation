@@ -134,6 +134,8 @@ defmodule Absinthe.Federation.Schema.Phase.AddFederatedDirectives do
   defp maybe_add_tag_directive(node, _meta), do: node
 
   defp add_directive(%{directives: directives} = node, directive) do
+    IO.inspect(directives, label: "directives inside add_directive")
+    IO.inspect(directive, label: "directive inside add_directives")
     %{node | directives: [directive | directives]}
   end
 
