@@ -113,14 +113,15 @@ defmodule Absinthe.Federation.Schema.Phase.AddFederatedDirectives do
   #   add_directive(node, directive)
   # end
 
-  # defp maybe_add_link_directive(%Absinthe.Blueprint.Schema.SchemaDefinition{} = node, _) do
-  #   directive = Directive.build("link", url: "test", as: "test")
+  defp maybe_add_link_directive(%Absinthe.Blueprint.Schema.SchemaDefinition{} = node, _) do
+    IO.inspect(node, label: "trying to add directive")
+    directive = Directive.build("link", url: "test", as: "test")
 
-  #   add_directive(node, directive)
-  # end
+    add_directive(node, directive)
+  end
 
   defp maybe_add_link_directive(node, _meta) do
-    IO.inspect(node, label: "node")
+    # IO.inspect(node, label: "node")
     node
   end
 
