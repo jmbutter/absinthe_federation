@@ -48,6 +48,9 @@ defmodule Absinthe.Federation.Notation do
     end
   end
 
+  @doc """
+  Adds the `@link` directive to the schema
+  """
   defmacro link(params) do
     quote do
       meta :link, unquote(params)
