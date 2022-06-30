@@ -12,6 +12,8 @@ defmodule Absinthe.Federation.Schema.Phase.AddFederatedLinkDirectives do
   def run(%Blueprint{} = blueprint, _) do
     # blueprint = Blueprint.postwalk(blueprint, &collect_types/1)
     IO.inspect(blueprint, label: "blueprint")
+    # %Blueprint{schema_definitions: [%{directives: directives}]} = blueprint
+
     {:ok, blueprint}
   end
 

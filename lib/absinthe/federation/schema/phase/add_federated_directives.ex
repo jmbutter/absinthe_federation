@@ -119,7 +119,10 @@ defmodule Absinthe.Federation.Schema.Phase.AddFederatedDirectives do
   #   add_directive(node, directive)
   # end
 
-  defp maybe_add_link_directive(node, _meta), do: node
+  defp maybe_add_link_directive(node, _meta) do
+    IO.inspect(node, label: "node")
+    node
+  end
 
   defp maybe_add_tag_directive(node, %{tag: name}) do
     directive = Directive.build("tag", name: name)
