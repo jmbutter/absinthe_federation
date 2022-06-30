@@ -117,7 +117,7 @@ defmodule Absinthe.Federation.Schema.Phase.AddFederatedDirectives do
     IO.inspect(node, label: "trying to add directive")
     directive = Directive.build("link", url: "test", as: "test")
 
-    add_directive(node, directive)
+    add_directive(node, directive) |> IO.inspect(label: "after adding directive")
   end
 
   defp maybe_add_link_directive(node, _meta) do
