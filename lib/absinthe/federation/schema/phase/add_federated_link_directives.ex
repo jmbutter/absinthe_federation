@@ -4,10 +4,10 @@ defmodule Absinthe.Federation.Schema.Phase.AddFederatedLinkDirectives do
   use Absinthe.Phase
 
   alias Absinthe.Blueprint
-  alias Absinthe.Federation.Schema.Directive
-  alias Absinthe.Type
+  # alias Absinthe.Federation.Schema.Directive
+  # alias Absinthe.Type
 
-  @dialyzer {:nowarn_function, add_directive: 2}
+  # @dialyzer {:nowarn_function, add_directive: 2}
 
   def run(%Blueprint{} = blueprint, _) do
     # blueprint = Blueprint.postwalk(blueprint, &collect_types/1)
