@@ -37,7 +37,8 @@ defmodule Absinthe.Federation.Schema do
   def pipeline(pipeline) do
     Pipeline.insert_after(pipeline, TypeImports, [
       __MODULE__.Phase.AddFederatedTypes,
-      __MODULE__.Phase.AddFederatedDirectives
+      __MODULE__.Phase.AddFederatedDirectives,
+      __MODULE__.Phase.AddFederatedLinkDirectives
       # __MODULE__.Phase.Validation.KeyFieldsMustExist,
       # __MODULE__.Phase.Validation.KeyFieldsMustBeValidWhenExtends
     ])
@@ -66,7 +67,6 @@ defmodule Absinthe.Federation.Schema do
     # we can be assertive here, since this same pipeline was already used to
     # successfully compile the schema.
     {:ok, bp, _} = Absinthe.Pipeline.run(schema.__absinthe_blueprint__(), pipeline)
-    |> IO.inspect(label: "BP")
 
     Absinthe.Schema.Notation.SDL.Render.inspect(bp, %{pretty: true})
   end
