@@ -51,11 +51,21 @@ defmodule Absinthe.Federation.Notation do
   @doc """
   Adds the `@link` directive to the schema
   """
-  defmacro link(params) do
-    quote do
-      meta :link, unquote(params)
-    end
-  end
+  # defmacro link(raw_attrs \\ [], do: block) do
+  #   # record_link(__CALLER__, raw_attrs, block)
+  #   attrs =
+  #     raw_attrs
+  #     |> Keyword.put_new(:name, @default_query_name)
+  #   Absinthe.Schema.Notation.record!(__CALLER__, @object_type, :directive, attrs, block)
+  # end
+
+  # defp record_link(env, raw_attrs, block) do
+  #   attrs =
+  #     raw_attrs
+  #     |> Keyword.put_new(:name, @default_query_name)
+
+  #   Absinthe.Schema.Notation.record!(env, @object_type, :query, attrs, block)
+  # end
 
   @doc """
   Adds the `@external` directive to the field which marks a field as owned by another service.
