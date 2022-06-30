@@ -48,6 +48,12 @@ defmodule Absinthe.Federation.Notation do
     end
   end
 
+  defmacro link(params) do
+    quote do
+      meta :link, unquote(params)
+    end
+  end
+
   @doc """
   Adds the `@external` directive to the field which marks a field as owned by another service.
   This allows service A to use fields from service B while also knowing at runtime the types of that field.

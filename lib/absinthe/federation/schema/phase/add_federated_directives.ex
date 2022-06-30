@@ -33,6 +33,7 @@ defmodule Absinthe.Federation.Schema.Phase.AddFederatedDirectives do
     |> maybe_add_override_directive(meta)
     |> maybe_add_inaccessible_directive(meta)
     |> maybe_add_tag_directive(meta)
+    |> maybe_add_link_directive(meta)
   end
 
   @spec maybe_add_key_directive(term(), map()) :: term()
@@ -105,6 +106,14 @@ defmodule Absinthe.Federation.Schema.Phase.AddFederatedDirectives do
   end
 
   defp maybe_add_inaccessible_directive(node, _meta), do: node
+
+  defp maybe_add_link_directive(node, %{link: fields}) do
+    directive = Directive.build("link", url: fields[:url], as: fields[:as], for: fields[:for], import: fields[:import])
+
+    add_directive(node, directive)
+  end
+
+  defp maybe_add_link_directive(node, _meta), do: node
 
   defp maybe_add_tag_directive(node, %{tag: name}) do
     directive = Directive.build("tag", name: name)
