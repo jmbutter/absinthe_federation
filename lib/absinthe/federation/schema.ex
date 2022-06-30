@@ -66,6 +66,7 @@ defmodule Absinthe.Federation.Schema do
     # we can be assertive here, since this same pipeline was already used to
     # successfully compile the schema.
     {:ok, bp, _} = Absinthe.Pipeline.run(schema.__absinthe_blueprint__(), pipeline)
+    |> IO.inspect(label: "BP")
 
     Absinthe.Schema.Notation.SDL.Render.inspect(bp, %{pretty: true})
   end
