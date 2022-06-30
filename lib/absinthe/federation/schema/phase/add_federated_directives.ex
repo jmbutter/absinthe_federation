@@ -107,8 +107,8 @@ defmodule Absinthe.Federation.Schema.Phase.AddFederatedDirectives do
 
   defp maybe_add_inaccessible_directive(node, _meta), do: node
 
-  defp maybe_add_link_directive(node, %{link: fields}) do
-    directive = Directive.build("link", url: fields[:url], as: fields[:as], for: fields[:for], import: fields[:import])
+  defp maybe_add_link_directive(%Absinthe.Blueprint.Schema.SchemaDeclaration{} = node, _) do
+    directive = Directive.build("link", url: "test", as: "test")
 
     add_directive(node, directive)
   end
